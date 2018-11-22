@@ -99,3 +99,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias rake='noglob bundled_rake'
+alias be='bundle exec'
+alias tmux='tmux -2'
