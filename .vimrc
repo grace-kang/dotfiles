@@ -26,6 +26,8 @@ Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-surround'
 Plugin 'ervandew/supertab'
 Plugin 'gevann/vim-rg'
+Plugin 'gevann/vim-rspec-simple'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 filetype plugin indent on
@@ -94,7 +96,8 @@ function! RSpecCommand(lines)
 	exec cmd
 endfunction
 command! -nargs=1 RSpec :call RSpecCommand(<args>)nnoremap <leader>t :! bundle exec rspec %<cr>
-nnoremap <leader>ft :execute "RSpec " . line('.')<cr>
+noremap <leader>at :execute "RSpec %"<cr>
+noremap <leader>ft :execute "RSpec " . line('.')<cr>
 nnoremap <leader>g :call FzyCommand("rg $(bundle show $(bundle list \| tail -n +2 \| cut -f 4 -d' ' \| fzy)) --files -g ''", ":e")<cr>
 
 

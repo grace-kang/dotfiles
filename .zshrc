@@ -1,3 +1,5 @@
+source ~/.juul/aws-environment.sh
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -104,3 +106,29 @@ alias tmux='tmux -2'
 alias prtsc='xfce4-screenshooter --region -s ~/screenshots'
 
 eval "$(direnv hook zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function history-search-end {
+	integer ocursor=$CURSOR
+
+	if [[ $LASTWIDGET = history-beginning-search-*-end ]]; then
+		# Last widget called set $hbs_pos.
+		CURSOR=$hbs_pos
+	else
+		hbs_pos=$CURSOR
+	fi
+
+	if zle .${WIDGET%-end}; then
+		# success, go to end of line
+		zle .end-of-line
+	else
+		# failure, restore position
+		CURSOR=$ocursor
+		return 1
+	fi
+}
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end

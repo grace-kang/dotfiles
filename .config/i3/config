@@ -161,7 +161,7 @@ bar {
         tray_output none
 				position top
         
-				font pango:Inconsolata 10
+				font pango:Inconsolata 8
         
 				colors {
 					background #2B2935
