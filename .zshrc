@@ -1,10 +1,8 @@
-source ~/.juul/aws-environment.sh
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/grace/.oh-my-zsh
+export ZSH=/Users/gracekang/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -61,12 +59,13 @@ ZSH_THEME="dpoggi"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-git
-ruby
-dotenv
-chruby
-ruby-install
-bundler
+	git
+	ruby
+	dotenv
+	chruby
+	ruby-install
+	bundler
+	fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -128,6 +127,7 @@ function history-search-end {
 		return 1
 	fi
 }
+
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
